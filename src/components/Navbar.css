@@ -1,0 +1,20 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: rgb(245, 173, 147);
+  gap: 45px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav a {
+  text-decoration: none;
+  color:rgb(92, 47, 47);
+  transition: all 0.3s;
+}
+
+nav a:hover{
+  color:white;
+
+}
