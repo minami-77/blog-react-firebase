@@ -10,6 +10,7 @@ import { useState } from 'react';
 
 
 function App() {
+  //リロードしてもログイン情報が消えないようにローカルストレージのisAuth情報を取得する
   const [isAuth,setIsAuth]= useState(localStorage.getItem("isAuth"));
 
   return (
