@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Home.css";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { collection, doc, deleteDoc, getDocs } from 'firebase/firestore';
 
 
@@ -24,6 +24,7 @@ const [postList, setPostList] = useState([]);
 
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "posts", id))
+    window.location.href="/";
   }
 
   return (
@@ -39,7 +40,9 @@ const [postList, setPostList] = useState([]);
           </div>
           <div className="nameAndDeleteButton">
             <h3>@{post.author.username}</h3>
-            <button onClick={()=> handleDelete(post.id)}>Delete</button>
+            { post.author.id === auth.currentUser?.uid && (
+              <button onClick={()=> handleDelete(post.id)}>Delete</button>
+            )}
           </div>
         </div>
         )
