@@ -1,15 +1,18 @@
+// Setting for Routes with React-Router
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useState } from 'react';
+
 import './App.css'
-import {BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from './components/Home';
 import CreatePost from './components/CreatePost';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Navbar from './components/Navbar';
-import { useState } from 'react';
 
 
 function App() {
   //リロードしてもログイン情報が消えないようにローカルストレージのisAuth情報を取得する
+  // Web API: localStorage.getItem()
   const [isAuth,setIsAuth]= useState(localStorage.getItem("isAuth"));
 
   return (
