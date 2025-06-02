@@ -1,6 +1,5 @@
 import './App.css'
-// import ReactDOM from "react-dom/client";
-import {BrowserRouter as Router, Routes, Route, Link } from "react-router";
+import {BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from './components/Home';
 import CreatePost from './components/CreatePost';
 import Login from './components/Login';
@@ -14,7 +13,7 @@ function App() {
   const [isAuth,setIsAuth]= useState(localStorage.getItem("isAuth"));
 
   return (
-    <Router>
+    <BrowserRouter>
       <Navbar isAuth={isAuth}/>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
@@ -23,7 +22,7 @@ function App() {
         <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}></Route>
       </Routes>
 
-    </Router>
+    </BrowserRouter>
     )
 }
 

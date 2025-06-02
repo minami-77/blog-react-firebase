@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "./createPost.css"
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from "../firebase";
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = ({isAuth}) => {
   const [title, setTitle] = useState();
