@@ -1,7 +1,7 @@
 // Setting for Routes with React-Router
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { useState } from 'react';
 
+import { useState } from 'react';
 import './App.css'
 import Home from './components/Home';
 import CreatePost from './components/CreatePost';
@@ -15,16 +15,17 @@ function App() {
   // Web API: localStorage.getItem()
   const [isAuth,setIsAuth]= useState(localStorage.getItem("isAuth"));
 
-  return (
+    return (
     <BrowserRouter>
+      {/* Pass the state of login/logout with isAuth  */}
       <Navbar isAuth={isAuth}/>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/createPost" element={<CreatePost isAuth={isAuth}/>}></Route>
+        {/* Update the state of login/logout with setIsAuth */}
         <Route path="/login" element={<Login setIsAuth={setIsAuth}/>}></Route>
         <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}></Route>
       </Routes>
-
     </BrowserRouter>
     )
 }
