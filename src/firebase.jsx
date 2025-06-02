@@ -1,14 +1,13 @@
 // Import the functions you need from the SDKs you need
+// Function to initialize firebase app
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
+// Functions to use Authentication
 import { getAuth, GoogleAuthProvider} from "firebase/auth";
+// Function to use FireStore
 import { getFirestore } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration (connect React and Firebase)
+// (copy and paste from firebase console)
 const firebaseConfig = {
   apiKey: "AIzaSyCFDjg-V5YuievUrJsRcv8bf_4RKp8rsgY",
   authDomain: "blog-91f39.firebaseapp.com",
@@ -21,10 +20,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+// Create instance to use Login and Logout
 const auth = getAuth(app);
-// インスタンス化
+// Create instance for authentication provider
 const provider = new GoogleAuthProvider();
+// Create instance for database
 const db = getFirestore(app);
 
+// Export instances to be able to use them in other files
 export {auth, provider, db};
