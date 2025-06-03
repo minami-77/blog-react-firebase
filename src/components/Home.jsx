@@ -9,27 +9,32 @@ import { auth, db } from "../firebase";
 const Home = () => {
 const [postList, setPostList] = useState([]);
 
-  // 2nd argument is set empty to be executed only once on initial mount.
+  // Set the second argument as an empty array to run the effect only once on initial mount.
   useEffect(()=>{
-    // Define async function
+    // Define an async function
     const getPosts = async () => {
-      // Get value of document as variable "data" using "getDocs" (see official docs, "posts" is a collection's name)
+      // Get the documents from the "posts" collection and store them in the "data" variable.
       const data = await getDocs(collection (db,"posts"))
 
       console.log(data);
       console.log(data.docs.map((doc)=>({ ...doc.data(),id: doc.id })));
 
-      // Get value of firestore data and id using function "data()" (see official docs)
-      // id needs to be added after "," cause it is not considered as value on firestore
-      // "..." is a spread syntax
-      setPostList(data.docs.map((doc)=>({ ...doc.data(),id: doc.id })));
+      // Extract value of firestore data and id using function "data()" (see official docs)
+      // doc.id is not part of the Firestore document fields, so it must be added manually
+      // 	"..." is the spread syntax to unpack the object returned by doc.data()
+      setPostList(data.docs.map((doc)=>({ ...doc.data(), id: doc.id })));
     };
     // Call the function
     getPosts();
   }, [])
 
+  // Define an async function with a parameter(id)
   const handleDelete = async (id) => {
-    await deleteDoc(doc(db, "posts", id))
+    // Delete the documents with the given id from the "posts" collection.
+    await deleteDoc(doc( db, "posts", id))
+    // Redirect to home
+    // JS native method: window.location.href → Reloads the page (login/logout state is reset)
+    // React Router: navigate() → Keeps the login/logout state (recommended for SPA)
     window.location.href="/";
   }
 
