@@ -42,6 +42,7 @@ const [postList, setPostList] = useState([]);
     <div className="homePage">
       {postList.map((post)=>{
         return (
+        // Need key is differentiate elements
         <div className="postContents" key={post.id}>
           <div className="postHeader">
             <h1>{post.title}</h1>
@@ -51,6 +52,7 @@ const [postList, setPostList] = useState([]);
           </div>
           <div className="nameAndDeleteButton">
             <h3>@{post.author.username}</h3>
+            {/* use ? to prevent error when currentUser is null or undefined */}
             { post.author.id === auth.currentUser?.uid && (
               <button onClick={()=> handleDelete(post.id)}>Delete</button>
             )}
