@@ -1,7 +1,9 @@
+// Setting for Routes with React-Router
+import { useNavigate } from 'react-router-dom';
 // import authentication function from firebase official docs
 import { signOut } from 'firebase/auth';
+// receive instances auth from firebase.jsx
 import { auth } from "../firebase";
-import { useNavigate } from 'react-router-dom';
 
 // receive setIsAuth from App.jsx to update the state of login/logout
 const Logout = ({setIsAuth}) => {

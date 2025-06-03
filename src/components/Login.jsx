@@ -1,7 +1,7 @@
-// import authentication function from firebase official docs
-import { signInWithPopup } from 'firebase/auth';
 // Setting for Routes with React-Router
 import { useNavigate } from 'react-router-dom';
+// import authentication function from firebase official docs
+import { signInWithPopup } from 'firebase/auth';
 // receive instances auth and provider from firebase.jsx
 import { auth, provider } from "../firebase";
 
