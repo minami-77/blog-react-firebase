@@ -57,10 +57,7 @@ const [postList, setPostList] = useState([]);
           </div>
         </div>
         )
-
       })}
-
-
     </div>
   )
 }
