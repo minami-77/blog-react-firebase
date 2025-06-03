@@ -9,19 +9,20 @@ import { auth, db } from "../firebase";
 const Home = () => {
 const [postList, setPostList] = useState([]);
 
-  // To ignite only once, use useEffect. 2nd argument is sest to be empty 第二引数は空にする
+  // Ignite only once. use useEffect and 2nd argument is set empty.
   useEffect(()=>{
-    // Get document using "getDocs" (see official docs)
+    // Set function to get value of document using "getDocs" (see official docs)
+    // "posts" is a collection's name
     const getPosts = async () => {
       const data = await getDocs(collection (db,"posts"))
       // console.log(data);
-      // console.log(data.docs);
       // console.log(data.docs.map((doc)=>({ doc })));
       // データ関数.data(),スプレッド構文
       console.log(data.docs.map((doc)=>({ ...doc.data(),id: doc.id })));
 
       setPostList(data.docs.map((doc)=>({ ...doc.data(),id: doc.id })));
     };
+    // Call the function
     getPosts();
   }, [])
 
