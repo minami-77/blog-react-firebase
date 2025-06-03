@@ -16,11 +16,12 @@ const [postList, setPostList] = useState([]);
       // Get value of document as variable "data" using "getDocs" (see official docs, "posts" is a collection's name)
       const data = await getDocs(collection (db,"posts"))
 
-      // console.log(data);
-      // console.log(data.docs.map((doc)=>({ doc })));
-      // データ関数.data(),スプレッド構文
+      console.log(data);
       console.log(data.docs.map((doc)=>({ ...doc.data(),id: doc.id })));
 
+      // Get value of firestore data and id using function "data()" (see official docs)
+      // id needs to be added after "," cause it is not considered as value on firestore
+      // "..." is a spread syntax
       setPostList(data.docs.map((doc)=>({ ...doc.data(),id: doc.id })));
     };
     // Call the function
