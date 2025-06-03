@@ -1,4 +1,4 @@
-// Read Link component from react-router-dom (react router)
+// Setting for Routes with React-Router
 import { Link } from "react-router-dom";
 
 import "./Navbar.css"
