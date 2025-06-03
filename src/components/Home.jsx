@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import "./Home.css";
-import { auth, db } from "../firebase";
+// import function to store values from firebase official docs
 import { collection, doc, deleteDoc, getDocs } from 'firebase/firestore';
+// receive instances auth and provider from firebase.jsx
+import { auth, db } from "../firebase";
 
 
 const Home = () => {
 const [postList, setPostList] = useState([]);
 
-  // 一度だけ発火のため、第二引数は空にする
+  // To ignite only once, use useEffect. 2nd argument is sest to be empty 第二引数は空にする
   useEffect(()=>{
+    // Get document using "getDocs" (see official docs)
     const getPosts = async () => {
       const data = await getDocs(collection (db,"posts"))
       // console.log(data);
