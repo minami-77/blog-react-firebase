@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // receive instances auth and provider from firebase.jsx
 import { auth, provider } from "../firebase";
 
-// receive sate of isAuth from App.jsx
+// receive setIsAuth from App.jsx to update the state of login/logout
 const Login = ({setIsAuth}) => {
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ const Login = ({setIsAuth}) => {
       localStorage.setItem("isAuth", true);
       // Update the state
       setIsAuth(true);
-      // redirect to home
+      // Redirect to home
       navigate("/");
     });
 
