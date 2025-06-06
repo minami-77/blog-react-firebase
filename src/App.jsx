@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 
 
 function App() {
-  //リロードしてもログイン情報が消えないようにローカルストレージのisAuth情報を取得する
+  //リロードしてもログイン情報が消えないようにローカルストレージにisAuth情報を保存
   // localStorage.getItem() (Web API official function)
   const [isAuth,setIsAuth]= useState(localStorage.getItem("isAuth"));
 
